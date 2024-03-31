@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "outDir": "./dist"
+  },
+  "include": ["src", "global.d.ts"],
+  "exclude": ["dist"]
+}

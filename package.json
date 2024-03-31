@@ -1,0 +1,22 @@
+{
+  "name": "chinese-calendar-ts",
+  "version": "1.0.0",
+  "repository": "git@github.com:yfjiang-danny/chinese-calendar-ts.git",
+  "author": "yfjiang.danny@outlook.com",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "esbuild": "^0.20.2",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.3"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc --emitDeclarationOnly && node build.js",
+    "test": "jest"
+  }
+}
