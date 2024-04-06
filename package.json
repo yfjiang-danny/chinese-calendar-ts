@@ -17,6 +17,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && tsc --emitDeclarationOnly && node build.js",
+    "prepublish": "yarn build",
     "test": "jest"
   }
 }

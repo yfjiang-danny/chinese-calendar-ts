@@ -1,19 +1,20 @@
-import { isHoliday } from "../src/index";
+import { HOLIDAYS, WEEKEND_WORKDAYS } from "../src/define";
+import { isHoliday, isWorkday } from "../src/index";
 
 test("init", () => {
-  // Weekday
-  expect(isHoliday(new Date("2024-03-25"))).toBe(false);
-  expect(isHoliday(new Date("2024-03-26"))).toBe(false);
-  expect(isHoliday(new Date("2024-03-27"))).toBe(false);
-  expect(isHoliday(new Date("2024-03-28"))).toBe(false);
-  expect(isHoliday(new Date("2024-03-29"))).toBe(false);
+  const year = new Date().getFullYear().toString();
 
-  // Weekend
-  expect(isHoliday(new Date("2024-03-30"))).toBe(true);
-  expect(isHoliday(new Date("2024-03-31"))).toBe(true);
+  const yearHolidays = HOLIDAYS[year];
+  const weekendWorkdays = WEEKEND_WORKDAYS[year];
 
-  // 清明
-  expect(isHoliday(new Date("2024-04-04"))).toBe(true);
-  expect(isHoliday(new Date("2024-04-05"))).toBe(true);
-  expect(isHoliday(new Date("2024-04-06"))).toBe(true);
+  expect(!!yearHolidays).toBe(true);
+  expect(!!weekendWorkdays).toBe(true);
+
+  Object.keys(yearHolidays).forEach((key) => {
+    expect(isHoliday(new Date(key))).toBe(true);
+  });
+
+  Object.keys(weekendWorkdays).forEach((key) => {
+    expect(isWorkday(new Date(key))).toBe(true);
+  });
 });

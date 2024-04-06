@@ -5,7 +5,7 @@ function build() {
   formats.forEach((v) => {
     esbuild
       .build({
-        entryPoints: ["index.ts"],
+        entryPoints: ["src/index.ts"],
         outdir: "dist",
         outExtension: {
           ".js": v == "esm" ? ".mjs" : ".cjs",
