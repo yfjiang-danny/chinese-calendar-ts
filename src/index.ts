@@ -1,4 +1,5 @@
 import { HOLIDAYS, WEEKEND_WORKDAYS } from "./define";
+import { HolidayType } from "./type";
 import { format } from "./util";
 
 /**
@@ -47,4 +48,24 @@ function isWorkday(date: Date) {
   return !isWeekend;
 }
 
-export { isHoliday, isWorkday };
+function getHolidayTypes() {
+  return ["元旦" ,"春节" ,"清明节" ,"端午节" ,"劳动节" ,"中秋节" ,"国庆节"]
+}
+
+function getHolidayDays(type: HolidayType, date = new Date()) {
+  const year = date.getFullYear().toString();
+  const yearHolidays = HOLIDAYS[year];
+  if (!yearHolidays) {
+    throw new Error("Over scope");
+  }
+  const res: string[] = [];
+  Object.keys(yearHolidays).forEach(v => {
+    if (yearHolidays[v] === type) {
+      res.push(v)
+    }
+  });
+
+  return res;
+}
+
+export { isHoliday, isWorkday, getHolidayTypes, getHolidayDays };
