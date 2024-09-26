@@ -1,3 +1,4 @@
+import { HolidayType } from "./type";
 /**
  * 是否是假日
  * @param date
@@ -10,4 +11,6 @@ declare function isHoliday(date: Date): boolean;
  * @returns
  */
 declare function isWorkday(date: Date): boolean;
-export { isHoliday, isWorkday };
+declare function getHolidayTypes(): string[];
+declare function getHolidayDays(type: HolidayType, date?: Date): string[];
+export { isHoliday, isWorkday, getHolidayTypes, getHolidayDays };

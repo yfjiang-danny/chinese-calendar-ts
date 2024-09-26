@@ -16,13 +16,14 @@ function isHoliday(date: Date) {
   }
   const key = format(date, "YYYY-MM-DD");
 
-  const day = date.getDay();
-  const isWeekend = day === 0 || day > 5;
-
   if (key) {
-    if (yearHolidays[key] || (isWeekend && !weekendWorkdays[key])) return true;
+    if (yearHolidays[key]) return true;
+    if (weekendWorkdays[key]) return false;
   }
-  return isWeekend;
+
+  const day = date.getDay();
+
+  return day < 1 || day > 5;
 }
 
 /**
@@ -39,17 +40,18 @@ function isWorkday(date: Date) {
   }
   const key = format(date, "YYYY-MM-DD");
 
-  const day = date.getDay();
-  const isWeekend = day === 0 || day > 5;
-
   if (key) {
-    if (weekendWorkdays[key] || (!isWeekend && !yearHolidays[key])) return true;
+    if (weekendWorkdays[key]) return true;
+    if (yearHolidays[key]) return false;
   }
-  return !isWeekend;
+
+  const day = date.getDay();
+
+  return day > 0 && day < 6;
 }
 
 function getHolidayTypes() {
-  return ["元旦" ,"春节" ,"清明节" ,"端午节" ,"劳动节" ,"中秋节" ,"国庆节"]
+  return ["元旦", "春节", "清明节", "端午节", "劳动节", "中秋节", "国庆节"];
 }
 
 function getHolidayDays(type: HolidayType, date = new Date()) {
@@ -59,9 +61,9 @@ function getHolidayDays(type: HolidayType, date = new Date()) {
     throw new Error("Over scope");
   }
   const res: string[] = [];
-  Object.keys(yearHolidays).forEach(v => {
+  Object.keys(yearHolidays).forEach((v) => {
     if (yearHolidays[v] === type) {
-      res.push(v)
+      res.push(v);
     }
   });
 

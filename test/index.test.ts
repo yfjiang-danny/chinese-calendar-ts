@@ -14,7 +14,15 @@ test("init", () => {
     expect(isHoliday(new Date(key))).toBe(true);
   });
 
+  Object.keys(yearHolidays).forEach((key) => {
+    expect(isWorkday(new Date(key))).toBe(false);
+  });
+
   Object.keys(weekendWorkdays).forEach((key) => {
     expect(isWorkday(new Date(key))).toBe(true);
+  });
+
+  Object.keys(weekendWorkdays).forEach((key) => {
+    expect(isHoliday(new Date(key))).toBe(false);
   });
 });
