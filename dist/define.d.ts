@@ -7,6 +7,8 @@
  * 2022 https://www.gov.cn/zhengce/content/2021-10/25/content_5644835.htm
  * 2023 https://www.gov.cn/zhengce/zhengceku/2022-12/08/content_5730844.htm
  * 2024 https://www.gov.cn/zhengce/zhengceku/202310/content_6911528.htm
+ * 2025 https://www.gov.cn/zhengce/jiedu/tujie/202411/content_6986437.htm
+ * 2026 https://www.gov.cn/yaowen/liebiao/202511/content_7047104.htm
  */
 export declare const HOLIDAYS: Record<string, Record<string, string>>;
 export declare const WEEKEND_WORKDAYS: Record<string, Record<string, string>>;
